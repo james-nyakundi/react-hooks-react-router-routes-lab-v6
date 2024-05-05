@@ -1,13 +1,24 @@
-import {Link} from 'react-router-dom';
+import React from "react";
+import { movies } from "../data";
 
-function MovieCard({title}) {
-  
+function Movies() {
+  const movieItems = movies.map((movie) => (
+     <div key={movie.title}>
+      {movie.title}
+      {movie.time}
+      <ul>
+        {movie.genres.map((genre) => (
+          <li key={genre}>{genre}</li>
+        ))}
+      </ul>
+    </div>
+  ))
   return (
-    <article>
-        <h2>{title}</h2>
-        {/* What should go here? */}
-    </article>
+  <div>
+     <h1>Movies Page</h1>
+   {movieItems}
+  </div>
   );
-};
+}
 
-export default MovieCard;
+export default Movies;
